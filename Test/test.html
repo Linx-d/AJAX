@@ -9,13 +9,11 @@
 <body>
 	<script>
 /*----------------test login--------------------------*/
-		localAjaxN("/deviceData/listUserLocation", t_sc, t_er); 
-		function t_sc(data) {
+		setAjaxN("/deviceData/listUserLocation", function(data) {
 			console.log('test');
-		}
-		function t_er(data) {
+		}, function(data) {
 			console.log('error')
-		}
+		}); 
 /*----------------test end--------------------------*/		
 	</script>
 </body>

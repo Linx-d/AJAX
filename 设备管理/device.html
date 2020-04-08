@@ -15,13 +15,13 @@
 		"electric":1,
 		"online":2
 		}
-    localAjax("/device/insert", cr_obj, cr_sc, cr_er);
-    function cr_sc(data) {
+    setAjax("/device/insert", cr_obj, function(data) {
     	console.log('插入设备');
-    }
-    function cr_er(data) {
+    }, function(data) {
     	console.log('error');
-    }
+    });
+    
+    
  /*----------------插入设备 end--------------------------*/
 
  /*----------------批量插入设备 login--------------------------*/
@@ -48,13 +48,13 @@
 		"electric":"1"
 	}
 	]
-    localAjax("/device//batchInsertDevice", pcr_obj, pcr_sc, pcr_er);
-    function pcr_sc(data) {
+    setAjax("/device//batchInsertDevice", pcr_obj, function(data) {
     	console.log('批量插入设备');
-    }
-    function pcr_er(data) {
+    }, function(data) {
     	console.log('error');
-    }
+    });
+    
+    
  /*----------------批量插入设备 end--------------------------*/
 
  /*----------------批量删除设备 login--------------------------*/
@@ -81,13 +81,13 @@
 				"electric":"1"
 			}
 		]
-    localAjax("/device/batchDeleteDevice", psc_obj, psc_sc, psc_er);
-    function psc_sc(data) {
+    setAjax("/device/batchDeleteDevice", psc_obj, function (data) {
     	console.log('批量删除设备');
-    }
-    function psc_er(data) {
+    }, function (data) {
     	console.log('error');
-    }
+    });
+    
+    
  /*----------------批量删除设备 end--------------------------*/
 /*----------------不对外开放接口 end--------------------------*/
 
@@ -100,23 +100,23 @@
 			"longitude":"106.486654",
 			"electric":"2"
 		}
-    localAjax("/deviceData/add", sup_obj, sup_sc, sup_er);
-    function sup_sc(data) {
+    setAjax("/deviceData/add", sup_obj, function (data) {
     	console.log('设备上传数据');
-    }
-    function sup_er(data) {
+    }, function (data) {
     	console.log('error');
-    }
+    });
+    
+    
 /*----------------设备上传数据 end--------------------------*/
 
 /*----------------根据设备绑定状态查询设备 login--------------------------*/
-    localAjaxN("/device/listDeviceByOnline?page=1&limit=10&online=true", gbc_sc, gbc_er); 
-    function gbc_sc(data) {
+    setAjaxN("/device/listDeviceByOnline?page=1&limit=10&online=true", function (data) {
         	console.log('根据设备绑定状态查询设备');
-        }
-    function gbc_er(data) {
+        }, function (data) {
         	console.log('error');
-        }
+        }); 
+    
+    
 /*----------------根据设备绑定状态查询设备 end--------------------------*/
 
 /*----------------根据设备imei查询设备在线状态 login--------------------------*/
@@ -137,13 +137,13 @@
 		"imei":12135456785
 	}
 	]
-    localAjax("/device/listDeviceByImei?page=1&limit=10", cx_obj, cx_sc, cx_er);
-    function cx_sc(data) {
+    setAjax("/device/listDeviceByImei?page=1&limit=10", cx_obj, function (data) {
     	console.log('根据设备imei查询设备在线状态');
-    }
-    function cx_er(data) {
+    }, function (data) {
     	console.log('error');
-    }
+    });
+    
+    
 /*----------------根据设备imei查询设备在线状态 end--------------------------*/
 	</script>
 </body>

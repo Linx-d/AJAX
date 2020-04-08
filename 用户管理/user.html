@@ -9,36 +9,30 @@
 <body>
 	<script>
 /*----------------根据用户id获取用户信息 login--------------------------*/
-    localAjaxN("/user/getUserById?userId=2", id_sc, id_er); 
-    function id_sc(data) {
-    	console.log('根据用户id获取用户信息');
-    }
-    function id_er(data) {
-    	console.log('error');
-    }
+    setAjaxN("/user/getUserById?userId=2", function(data) {
+        console.log('根据用户id获取用户信息');
+    }, function(data) {
+        console.log('error');
+    }); 
 /*----------------根据用户id获取用户信息 end--------------------------*/
 
 /*----------------根据用户id获取设备最新数据 login--------------------------*/
-    localAjaxN("/device/getDeviceInfoByUserId?userId=15", us_sc, us_er); 
-    function us_sc(data) {
-    	console.log('根据用户id获取设备最新数据');
-    }
-    function us_er(data) {
-    	console.log('error');
-    }
+    setAjaxN("/device/getDeviceInfoByUserId?userId=15", function(data) {
+        console.log('根据用户id获取设备最新数据');
+    }, function(data) {
+        console.log('error');
+    }); 
 /*----------------根据用户id获取设备最新数据 end--------------------------*/
 
 /*----------------获取用户历史数据信息 login--------------------------*/
                     var ls_obj = {
 					"userId":2
 				}
-            localAjax("/deviceData/listUserLocationById?page=1&limit=10", ls_obj, ls_sc, ls_er);
-            function ls_sc(data) {
-            	console.log('获取用户历史数据信息');
-            }
-            function ls_er(data) {
-            	console.log('error');
-            }   
+            setAjax("/deviceData/listUserLocationById?page=1&limit=10", ls_obj, function(data) {
+                console.log('获取用户历史数据信息');
+            }, function(data) {
+                console.log('error');
+            } );
 /*----------------获取用户历史数据信息 end--------------------------*/
 
 /*----------------解绑设备 login--------------------------*/
@@ -47,13 +41,11 @@
 				"userId":"13",
 				"deviceId":"325"
 			}
-            localAjax("/user/unBoundDevice", sb_obj, sb_sc, sb_er);
-            function sb_sc(data) {
-            	console.log('解绑设备');
-            }
-            function sb_er(data) {
-            	console.log('error');
-            }
+            setAjax("/user/unBoundDevice", sb_obj, function(data) {
+                console.log('解绑设备');
+            }, function(data) {
+                console.log('error');
+            });
 /*----------------解绑设备 end--------------------------*/
 
 /*----------------绑定设备 login--------------------------*/
@@ -65,23 +57,19 @@
 					"sex":"男",
 					"age":"22",
 					"address":"重庆市北碚区"				}
-            localAjax("/user/boundDevice", bd_obj, bd_sc, bd_er);
-            function bd_sc(data) {
-            	console.log('绑定设备');
-            }
-            function bd_er(data) {
-            	console.log('error');
-            }
+            setAjax("/user/boundDevice", bd_obj, function(data) {
+                console.log('绑定设备');
+            }, function(data) {
+                console.log('error');
+            });
 /*----------------绑定设备 end--------------------------*/
 
 /*----------------获取用户最新位置信息 login--------------------------*/
-    localAjaxN("/deviceData/listUserLocation", nw_sc, nw_er); 
-    function nw_sc(data) {
-    	console.log('获取用户最新位置信息');
-    }
-    function nw_er(data) {
-    	console.log('error');
-    }
+    setAjaxN("/deviceData/listUserLocation", function(data) {
+        console.log('获取用户最新位置信息');
+    }, function(data) {
+        console.log('error');
+    }); 
 /*----------------获取用户最新位置信息 end--------------------------*/
 	</script>
 </body>

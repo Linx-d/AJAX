@@ -12,13 +12,11 @@
             var dg_obj = {
 					"userId":2
 				}
-            localAjax("/alarm/getAlarmByUserId", dg_obj, dg_sc, dg_er);
-            function dg_sc(data) {
+            setAjax("/alarm/getAlarmByUserId", dg_obj, function(data) {
             	console.log('获取用户告警信息');
-            }
-            function dg_er(data) {
+            }, function(data) {
             	console.log('error');
-            }
+            }); 
 /*----------------获取用户告警信息 end--------------------------*/
 	</script>
 </body>
