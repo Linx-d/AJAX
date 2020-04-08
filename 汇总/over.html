@@ -2,15 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>over</title>
 	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-	<script src="ajaxMy.js"></script>
+	<script src="../ajaxMy.js"></script>
 </head>
 <body>
 	<script>
+/*----------------增加围栏 login--------------------------*/
+        var zj_obj = {
+                "latitude":"1212",
+                "longitude":"31125",
+                "radius":"200"
+                }
+        localAjax("/rail/addRail", zj_obj, zj_sc, zj_er);
+        function zj_sc(data) {
+            console.log('增加围栏');
+        }
+        function zj_er(data) {
+            console.log('error');
+        }
+/*----------------增加围栏 end--------------------------*/
 
 /*----------------获取电子围栏信息 login--------------------------*/
-		/*本地*/
 		localAjaxN("/rail/listRail?limit=10&page=1", g_sc, g_er); 
 		function g_sc(data) {
 			console.log('获取电子围栏');
@@ -21,7 +34,6 @@
 /*----------------获取电子围栏信息 end--------------------------*/		
 
 /*----------------修改电子围栏信息  login--------------------------*/
-		/*本地*/
 		var obj = {
 		      "latitude": "1212.21",
 		      "longitude": "32125.2134",
@@ -38,7 +50,6 @@
 /*----------------修改电子围栏信息 end--------------------------*/
 
 /*----------------获取企业微信jssdkConfig login--------------------------*/
-		/*本地*/
 		var js_obj = {
 			corpId:"ww2e7b5f3c87c34c17",
 			url:"iot.chinautech.com"
@@ -52,8 +63,23 @@
 		}
 /*----------------获取企业微信jssdkConfig end--------------------------*/
 
+/*----------------绑定用户围栏 login--------------------------*/
+        var pa_obj = [
+                {
+                    "railId":2,
+                    "userId":15
+                }
+            ]
+        localAjax("/rail/batchInsertRailUser", pa_obj, pa_sc, pa_er);
+        function pa_sc(data) {
+            console.log('绑定用户围栏');
+        }
+        function pa_er(data) {
+            console.log('error');
+        }
+/*----------------绑定用户围栏 end--------------------------*/
+
 /*----------------解绑用户围栏 login--------------------------*/
-		/*本地*/
 		var jbu_obj = [
 				{
 					"railId":2,
@@ -75,8 +101,27 @@
 		}
 /*----------------解绑用户围栏 end--------------------------*/
 
+/*----------------获取指定围栏的所有用户 login--------------------------*/
+        localAjaxN("/rail/listUserByRail?railId=2", zdu_sc, zdu_er); 
+        function zdu_sc(data) {
+            console.log('获取指定围栏的所有用户');
+        }
+        function zdu_er(data) {
+            console.log('error');
+        }
+/*----------------获取指定围栏的所有用户 end--------------------------*/
+
+/*----------------获取指定用户的所有围栏 login--------------------------*/
+        localAjaxN("/rail/queryRailByUserId?userId=2", zdw_sc, zdw_er); 
+        function zdw_sc(data) {
+            console.log('获取指定用户的所有围栏');
+        }
+        function zdw_er(data) {
+            console.log('error');
+        }
+/*----------------获取指定用户的所有围栏 end--------------------------*/
+
 /*----------------批量添加用户围栏 login--------------------------*/
-        /*本地*/
         var pa_obj = [
 				{
 					"railId":2,
@@ -93,7 +138,6 @@
 /*----------------批量添加用户围栏 end--------------------------*/
 
 /*----------------解绑企业微信 login--------------------------*/
-    /*本地*/
     localAjaxN("/user/unBoundWxByUserId?userId=2", jbw_sc, jbw_er); 
     function jbw_sc(data) {
     	console.log('解绑企业微信');
@@ -104,7 +148,6 @@
 /*----------------解绑企业微信 end--------------------------*/
 
 /*----------------locahost login--------------------------*/
-    /*本地*/
     localAjaxN("/deviceData/listUserLocation", lo_sc, lo_er); 
     function lo_sc(data) {
     	console.log('locahost');
@@ -115,7 +158,6 @@
 /*----------------locahost end--------------------------*/
 
 /*----------------根据用户id获取用户信息 login--------------------------*/
-    /*本地*/
     localAjaxN("/user/getUserById?userId=2", id_sc, id_er); 
     function id_sc(data) {
     	console.log('根据用户id获取用户信息');
@@ -126,7 +168,6 @@
 /*----------------根据用户id获取用户信息 end--------------------------*/
 
 /*----------------根据用户id获取设备最新数据 login--------------------------*/
-    /*本地*/
     localAjaxN("/device/getDeviceInfoByUserId?userId=15", us_sc, us_er); 
     function us_sc(data) {
     	console.log('根据用户id获取设备最新数据');
@@ -137,8 +178,7 @@
 /*----------------根据用户id获取设备最新数据 end--------------------------*/
 
 /*----------------获取用户告警信息 login--------------------------*/
-            /*本地*/
-            var dg_obj = {
+                var dg_obj = {
 					"userId":2
 				}
             localAjax("/alarm/getAlarmByUserId", dg_obj, dg_sc, dg_er);
@@ -151,8 +191,7 @@
 /*----------------获取用户告警信息 end--------------------------*/
 
 /*----------------获取用户历史数据信息 login--------------------------*/
-            /*本地*/
-            var ls_obj = {
+                var ls_obj = {
 					"userId":2
 				}
             localAjax("/deviceData/listUserLocationById?page=1&limit=10", ls_obj, ls_sc, ls_er);
@@ -165,8 +204,7 @@
 /*----------------获取用户历史数据信息 end--------------------------*/
 
 /*----------------解绑设备 login--------------------------*/
-            /*本地*/
-            var sb_obj = {
+                var sb_obj = {
 				"deviceImei":"12135456784",
 				"userId":"13",
 				"deviceId":"325"
@@ -181,8 +219,7 @@
 /*----------------解绑设备 end--------------------------*/
 
 /*----------------绑定设备 login--------------------------*/
-            /*本地*/
-            var bd_obj = {
+                var bd_obj = {
 					"imei":"12135456784",
 					"online":true,
 					"name":"李五",
@@ -200,7 +237,6 @@
 /*----------------绑定设备 end--------------------------*/
 
 /*----------------获取用户最新位置信息 login--------------------------*/
-    /*本地*/
     localAjaxN("/deviceData/listUserLocation", nw_sc, nw_er); 
     function nw_sc(data) {
     	console.log('获取用户最新位置信息');
@@ -211,7 +247,6 @@
 /*----------------获取用户最新位置信息 end--------------------------*/
 
 /*----------------插入设备 login--------------------------*/
-    /*本地*/
     var cr_obj = {
 		"imei":3234243120,
 		"electric":1,
@@ -227,7 +262,6 @@
 /*----------------插入设备 end--------------------------*/
 
 /*----------------批量插入设备 login--------------------------*/
-    /*本地*/
     var pcr_obj = [
 	{
 		"imei": 123456789,
@@ -261,7 +295,6 @@
 /*----------------批量插入设备 end--------------------------*/
 
 /*----------------查询设备状态 login--------------------------*/
-    /*本地*/
     var cx_obj = [
 	{
 		"imei":12135456782
@@ -289,7 +322,6 @@
 /*----------------查询设备状态 end--------------------------*/
 
 /*----------------根据设备状态查询设备 login--------------------------*/
-    /*本地*/
     localAjaxN("/device/listDeviceByOnline?page=1&limit=10&online=true", gus_sc, gus_er); 
     function gus_sc(data) {
     	console.log('根据设备状态查询设备');
@@ -300,7 +332,6 @@
 /*----------------根据设备状态查询设备 end--------------------------*/
 
 /*----------------设备上传数据 login--------------------------*/
-    /*本地*/
     var sup_obj = {
 			"imei":"869075033888688",
 			"temperature":"39.8",

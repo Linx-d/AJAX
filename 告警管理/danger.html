@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>danger</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="../ajaxMy.js"></script>
+</head>
+<body>
+	<script>
+/*----------------获取用户告警信息 login--------------------------*/
+            var dg_obj = {
+					"userId":2
+				}
+            localAjax("/alarm/getAlarmByUserId", dg_obj, dg_sc, dg_er);
+            function dg_sc(data) {
+            	console.log('获取用户告警信息');
+            }
+            function dg_er(data) {
+            	console.log('error');
+            }
+/*----------------获取用户告警信息 end--------------------------*/
+	</script>
+</body>
+</html>

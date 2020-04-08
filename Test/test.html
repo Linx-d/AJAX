@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="../ajaxMy.js"></script>
+</head>
+<body>
+	<script>
+/*----------------test login--------------------------*/
+		localAjaxN("/deviceData/listUserLocation", t_sc, t_er); 
+		function t_sc(data) {
+			console.log('test');
+		}
+		function t_er(data) {
+			console.log('error')
+		}
+/*----------------test end--------------------------*/		
+	</script>
+</body>
+</html>

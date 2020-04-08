@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>device</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="../ajaxMy.js"></script>
+</head>
+<body>
+	<script>
+/*----------------不对外开放接口 start--------------------------*/
+ /*----------------插入设备 login--------------------------*/
+    var cr_obj = {
+		"imei":3234243120,
+		"electric":1,
+		"online":2
+		}
+    localAjax("/device/insert", cr_obj, cr_sc, cr_er);
+    function cr_sc(data) {
+    	console.log('插入设备');
+    }
+    function cr_er(data) {
+    	console.log('error');
+    }
+ /*----------------插入设备 end--------------------------*/
+
+ /*----------------批量插入设备 login--------------------------*/
+    var pcr_obj = [
+	{
+		"imei": 123456789,
+		"electric":"1"
+	},	
+	{
+		"imei":123456781,
+		"electric":"1",
+		"online":1
+	},
+		{
+		"imei":123456782,
+		"electric":"1"
+	},
+		{
+		"imei":123456783,
+		"electric":"1"
+	},
+		{
+		"imei":123456784,
+		"electric":"1"
+	}
+	]
+    localAjax("/device//batchInsertDevice", pcr_obj, pcr_sc, pcr_er);
+    function pcr_sc(data) {
+    	console.log('批量插入设备');
+    }
+    function pcr_er(data) {
+    	console.log('error');
+    }
+ /*----------------批量插入设备 end--------------------------*/
+
+ /*----------------批量删除设备 login--------------------------*/
+    var psc_obj = [
+			{
+				"imei":22135456782,
+				"electric":"1"
+			},	
+			{
+				"imei":2234243120,
+				"electric":"1",
+				"online":1
+			},
+				{
+				"imei":2234243121,
+				"electric":"1"
+			},
+				{
+				"imei":2234243122,
+				"electric":"1"
+			},
+				{
+				"imei":2234243123,
+				"electric":"1"
+			}
+		]
+    localAjax("/device/batchDeleteDevice", psc_obj, psc_sc, psc_er);
+    function psc_sc(data) {
+    	console.log('批量删除设备');
+    }
+    function psc_er(data) {
+    	console.log('error');
+    }
+ /*----------------批量删除设备 end--------------------------*/
+/*----------------不对外开放接口 end--------------------------*/
+
+
+/*----------------设备上传数据 login--------------------------*/
+    var sup_obj = {
+			"imei":"869075033888688",
+			"temperature":"39.8",
+			"latitude":"29.490295",
+			"longitude":"106.486654",
+			"electric":"2"
+		}
+    localAjax("/deviceData/add", sup_obj, sup_sc, sup_er);
+    function sup_sc(data) {
+    	console.log('设备上传数据');
+    }
+    function sup_er(data) {
+    	console.log('error');
+    }
+/*----------------设备上传数据 end--------------------------*/
+
+/*----------------根据设备绑定状态查询设备 login--------------------------*/
+    localAjaxN("/device/listDeviceByOnline?page=1&limit=10&online=true", gbc_sc, gbc_er); 
+    function gbc_sc(data) {
+        	console.log('根据设备绑定状态查询设备');
+        }
+    function gbc_er(data) {
+        	console.log('error');
+        }
+/*----------------根据设备绑定状态查询设备 end--------------------------*/
+
+/*----------------根据设备imei查询设备在线状态 login--------------------------*/
+    var cx_obj = [
+	{
+		"imei":12135456782
+	},	
+	{
+		"imei":12135456783
+	},
+		{
+		"imei":12135456784
+	},
+		{
+		"imei":12135456786
+	},
+		{
+		"imei":12135456785
+	}
+	]
+    localAjax("/device/listDeviceByImei?page=1&limit=10", cx_obj, cx_sc, cx_er);
+    function cx_sc(data) {
+    	console.log('根据设备imei查询设备在线状态');
+    }
+    function cx_er(data) {
+    	console.log('error');
+    }
+/*----------------根据设备imei查询设备在线状态 end--------------------------*/
+	</script>
+</body>
+</html>

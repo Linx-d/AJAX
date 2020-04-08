@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fence</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="../ajaxMy.js"></script>
+</head>
+<body>
+	<script>
+/*----------------增加围栏 login--------------------------*/
+        var zj_obj = {
+                "latitude":"1212",
+                "longitude":"31125",
+                "radius":"200"
+                }
+        localAjax("/rail/addRail", zj_obj, zj_sc, zj_er);
+        function zj_sc(data) {
+            console.log('增加围栏');
+        }
+        function zj_er(data) {
+            console.log('error');
+        }
+/*----------------增加围栏 end--------------------------*/
+
+/*----------------获取所有围栏 login--------------------------*/
+		localAjaxN("/rail/listRail?limit=10&page=1", g_sc, g_er); 
+		function g_sc(data) {
+			console.log('获取所有围栏');
+		}
+		function g_er(data) {
+			console.log('error');
+		}
+/*----------------获取所有围栏 end--------------------------*/		
+
+/*----------------修改围栏参数  login--------------------------*/
+		var obj = {
+		      "latitude": "1212.21",
+		      "longitude": "32125.2134",
+		      "radius": "200",
+		      "userId": 2
+		  };
+		localAjax("/rail/updateRail", obj, c_sc, c_er);
+		function c_sc(data) {
+		  console.log('修改围栏参数');
+		}
+		function c_er(data) {
+		  console.log('error');
+		}
+/*----------------修改围栏参数 end--------------------------*/
+
+/*----------------绑定用户围栏 login--------------------------*/
+        var pa_obj = [
+                {
+                    "railId":2,
+                    "userId":15
+                }
+            ]
+        localAjax("/rail/batchInsertRailUser", pa_obj, pa_sc, pa_er);
+        function pa_sc(data) {
+            console.log('绑定用户围栏');
+        }
+        function pa_er(data) {
+            console.log('error');
+        }
+/*----------------绑定用户围栏 end--------------------------*/
+
+/*----------------解绑用户围栏 login--------------------------*/
+		var jbu_obj = [
+				{
+					"railId":2,
+					"userId":16
+					
+				},
+					{
+					"railId":2,
+					"userId":2
+					
+				}
+			]	
+		localAjax("/rail/batchDeleteRailUser", jbu_obj, jbu_sc, jbu_er);
+		function jbu_sc(data) {
+			console.log('解绑用户围栏');
+		}
+		function jbu_er(data) {
+			console.log('error');
+		}
+/*----------------解绑用户围栏 end--------------------------*/
+
+/*----------------获取指定围栏的所有用户 login--------------------------*/
+        localAjaxN("/rail/listUserByRail?railId=2", zdu_sc, zdu_er); 
+        function zdu_sc(data) {
+            console.log('获取指定围栏的所有用户');
+        }
+        function zdu_er(data) {
+            console.log('error');
+        }
+/*----------------获取指定围栏的所有用户 end--------------------------*/
+
+/*----------------获取指定用户的所有围栏 login--------------------------*/
+        localAjaxN("/rail/queryRailByUserId?userId=2", zdw_sc, zdw_er); 
+        function zdw_sc(data) {
+            console.log('获取指定用户的所有围栏');
+        }
+        function zdw_er(data) {
+            console.log('error');
+        }
+/*----------------获取指定用户的所有围栏 end--------------------------*/
+	</script>
+</body>
+</html>
