@@ -18,6 +18,7 @@
             jsApiList: [
                 'getCurExternalContact',
                 'openUserProfile',
+                'scanQRCode',
             ],
             success: function(res) {
                 wx.invoke('getCurExternalContact', {

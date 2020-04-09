@@ -8,13 +8,9 @@
 </head>
 <body>
 	<script>	
-/*----------------获取企业微信jssdkConfig login--------------------------*/
-		var js_obj = {
-			corpId:"ww2e7b5f3c87c34c17",
-			url:"iot.chinautech.com"
-		}		
-		setAjax("/rail/updateRail", js_obj, function(data) {
-			console.log('获取企业微信jssdkConfig');
+/*----------------获取企业微信jssdkConfig login--------------------------*/	
+		setAjaxN("/qywx/getJSSDK?corpId=ww2e7b5f3c87c34c17&url=iot.chinautech.com", function(data) {
+			console.log(data);
 		}, function(data) {
 			console.log('error');
 		});		
@@ -30,7 +26,7 @@
 
 /*----------------生成录入二维码 login--------------------------*/
         setAjaxN("/qywx/generateQRCode?number=21346544", function(data) {
-            console.log('生成录入二维码');
+            console.log(data);
         }, function(data) {
             console.log('error')
         });       
