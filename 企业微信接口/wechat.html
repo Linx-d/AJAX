@@ -27,6 +27,14 @@
             console.log('error')
         });       
 /*----------------解绑企业微信 end--------------------------*/  
+
+/*----------------生成录入二维码 login--------------------------*/
+        setAjaxN("/qywx/generateQRCode?number=21346544", function(data) {
+            console.log('生成录入二维码');
+        }, function(data) {
+            console.log('error')
+        });       
+/*----------------生成录入二维码 end--------------------------*/  
 	</script>
 </body>
 </html>

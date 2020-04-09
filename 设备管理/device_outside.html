@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>device</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="../ajaxMy.js"></script>
+</head>
+<body>
+	<script>
+/*----------------不对外开放接口 start--------------------------*/
+ /*----------------插入设备 login--------------------------*/
+    var cr_obj = {
+		"imei":3234243120,
+		"electric":1,
+		"online":2
+		}
+    setAjax("/device/insert", cr_obj, function(data) {
+    	console.log('插入设备');
+    }, function(data) {
+    	console.log('error');
+    });
+    
+    
+ /*----------------插入设备 end--------------------------*/
+
+ /*----------------批量插入设备 login--------------------------*/
+    var pcr_obj = [
+	{
+		"imei": 123456789,
+		"electric":"1"
+	},	
+	{
+		"imei":123456781,
+		"electric":"1",
+		"online":1
+	},
+		{
+		"imei":123456782,
+		"electric":"1"
+	},
+		{
+		"imei":123456783,
+		"electric":"1"
+	},
+		{
+		"imei":123456784,
+		"electric":"1"
+	}
+	]
+    setAjax("/device//batchInsertDevice", pcr_obj, function(data) {
+    	console.log('批量插入设备');
+    }, function(data) {
+    	console.log('error');
+    });
+    
+    
+ /*----------------批量插入设备 end--------------------------*/
+
+ /*----------------批量删除设备 login--------------------------*/
+    var psc_obj = [
+			{
+				"imei":22135456782,
+				"electric":"1"
+			},	
+			{
+				"imei":2234243120,
+				"electric":"1",
+				"online":1
+			},
+				{
+				"imei":2234243121,
+				"electric":"1"
+			},
+				{
+				"imei":2234243122,
+				"electric":"1"
+			},
+				{
+				"imei":2234243123,
+				"electric":"1"
+			}
+		]
+    setAjax("/device/batchDeleteDevice", psc_obj, function (data) {
+    	console.log('批量删除设备');
+    }, function (data) {
+    	console.log('error');
+    });
+    
+    
+ /*----------------批量删除设备 end--------------------------*/
+/*----------------不对外开放接口 end--------------------------*/
+	</script>
+</body>
+</html>
